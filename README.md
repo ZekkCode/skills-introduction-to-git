@@ -111,7 +111,7 @@ Proyek ini dilisensikan di bawah MIT License - lihat file [LICENSE](LICENSE) unt
 
 ## 🤝 Kontribusi
 
-Kontribusi, issues, dan feature requests sangat diterima! Jangan ragu untuk check [issues page](../../issues).
+Kontribusi, issues, dan feature requests sangat diterima! Jangan ragu untuk check [issues page](https://github.com/ZekkCode/skills-introduction-to-git/issues).
 
 ---
 
