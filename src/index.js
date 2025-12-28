@@ -45,6 +45,9 @@ let dropInterval = 1000;
 let lastTime = 0;
 let targetPattern = null;
 
+// Tambah variabel high score
+let highScore = 0;
+
 // Initialize game
 function init() {
   canvas = document.getElementById("gameCanvas");
@@ -68,6 +71,11 @@ function init() {
 
   // Add keyboard controls
   document.addEventListener("keydown", handleKeyPress);
+
+  // Load high score dari localStorage dan tampilkan
+  highScore = parseInt(localStorage.getItem("stackOverflownHighScore")) || 0;
+  const hsEl = document.getElementById("high-score");
+  if (hsEl) hsEl.textContent = highScore;
 }
 
 // Game loop
@@ -306,7 +314,16 @@ function clearPattern(startRow, startCol) {
 
 // Update score display
 function updateScore() {
-  document.getElementById("score").textContent = score;
+  const sEl = document.getElementById("score");
+  if (sEl) sEl.textContent = score;
+
+  // Update high score jika terlampaui
+  if (score > highScore) {
+    highScore = score;
+    const hsEl = document.getElementById("high-score");
+    if (hsEl) hsEl.textContent = highScore;
+    localStorage.setItem("stackOverflownHighScore", highScore);
+  }
 }
 
 // Handle keyboard input
@@ -345,7 +362,8 @@ function handleKeyPress(e) {
 // Toggle pause
 function togglePause() {
   isPaused = !isPaused;
-  document.getElementById("status").textContent = isPaused ? "Paused" : "Playing...";
+  const statusEl = document.getElementById("status");
+  if (statusEl) statusEl.textContent = isPaused ? "Paused" : "Playing...";
 }
 
 // End game
