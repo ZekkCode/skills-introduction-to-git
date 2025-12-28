@@ -71,6 +71,11 @@ function init() {
 
   // Add keyboard controls
   document.addEventListener("keydown", handleKeyPress);
+
+  // Load high score dari localStorage dan tampilkan
+  highScore = parseInt(localStorage.getItem("stackOverflownHighScore")) || 0;
+  const hsEl = document.getElementById("high-score");
+  if (hsEl) hsEl.textContent = highScore;
 }
 
 // Game loop
