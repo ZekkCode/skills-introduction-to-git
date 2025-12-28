@@ -277,6 +277,13 @@ function checkPatternMatch() {
       if (matchesPattern(startRow, startCol)) {
         clearPattern(startRow, startCol);
         score += 100;
+        patternsCleared++;
+        if (patternsCleared % 5 === 0) {
+          level++;
+          dropInterval = Math.max(200, 1000 - (level - 1) * 100);
+          const lvlEl = document.getElementById("level");
+          if (lvlEl) lvlEl.textContent = level;
+        }
         updateScore();
         setNewTargetPattern();
         return;
